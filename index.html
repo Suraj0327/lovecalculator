@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Love Percentage Calculator</title>
+  <style>
+    .container {
+      max-width: 400px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+  </style>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Love Percentage Calculator</h1>
+    
+    <form id="loveForm">
+      <label for="boyName">Boy Name:</label>
+      <input type="text" id="boyName" required><br>
+      
+      <label for="girlName">Girl Name:</label>
+      <input type="text" id="girlName" required><br>
+      
+      <button type="submit">Calculate</button>
+    </form>
+    
+    <div id="output"></div>
+  </div>
+
+  <script>
+    document.getElementById("loveForm").addEventListener("submit", function(event) {
+        event.preventDefault();
+        
+        var boyName = document.getElementById("boyName").value;
+        var girlName = document.getElementById("girlName").value;
+        
+        var n = Math.random();
+        var l = boyName.length + girlName.length;
+        n = n * l * 8;
+        var output = "Your love % is " + n + "%<br>";
+        var resultColor;
+        
+        if (n > 80) {
+          output += "You should live together.";
+          resultColor = "green";
+        } else if (n > 60 && n < 80) {
+          output += "You should date each other.";
+          resultColor = "purple";
+        } else if (n>40 && n<60) {
+          output += "Wait, still there is hope.";
+          resultColor = "blue";
+        }
+        else{
+            output += "bad luck try with another one";
+            resultColor = "blue";
+        }
+        
+        document.getElementById("output").innerHTML = output;
+        document.getElementById("output").style.color = resultColor;
+      });
+      
+  </script>
+</body>
+</html>
